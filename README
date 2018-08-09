@@ -10,6 +10,11 @@ It uses a Man-in-the-Middle reverse proxy to record the HTTP(S) responses and re
 
 - In one terminal:
 ```
+make spin_up_service
+```
+
+- In another terminal:
+```
 make start_recording
 ```
 
