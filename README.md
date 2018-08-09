@@ -1,7 +1,19 @@
 # Mocking with MITM
 
-This project illustrates one way to mock your HTTP(S) service to write integrations tests against this mock.
+[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)&nbsp;&nbsp;  &nbsp;&nbsp; 
+[![forthebadge](https://forthebadge.com/images/badges/compatibility-betamax.svg)](https://forthebadge.com)
+
+
+
+This project illustrates one way to mock your HTTP(S) service and write integration tests against it.
 It uses a Man-in-the-Middle reverse proxy to record the HTTP(S) responses and replays them.
+
+
+The Use Case for this skeleton: You want to write a python client (client/) to simplify the use of 
+an already existing HTTP Api (service/).
+
+The already existing service takes time to deploy and must be mocked to run the integration 
+tests of your python client.
 
 
 ## Getting Started
