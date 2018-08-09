@@ -1,0 +1,7 @@
+mock_service/test_cases.mitm
+
+.idea/*
+.cache/*
+.pytest_cache/*
+
+*.pyc

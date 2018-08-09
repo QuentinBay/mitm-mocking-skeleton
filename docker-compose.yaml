@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  pytest:
+    build: .
+    depends_on:
+      - "real_service_host"
+#    command: tail -f /dev/null
+    command: pytest /client/tests/integration -vvv -s
+
+# Here we use the real service host so that the client can resolve
+# this mock as if it was the deployed service.
+  real_service_host:
+    image: mitmproxy/mitmproxy:4.0.4
+    # This should expose your real service port (left part)
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./mock_service:/tmp/mock_service
+    command:
+      - "mitmdump"
+      - "-v"
+      - "--showhost"
+      - "--mode"
+      - "reverse:http://localhost:8080"   # when used in reverse proxy mode, need to specify upstream
+      - "-p"
+      - "8000"
+      - "--server-replay-nopop"  # useful for the health check
+      - "--server-replay"
+      - "/tmp/mock_service/test_cases.mitm"
